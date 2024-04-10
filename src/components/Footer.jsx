@@ -7,10 +7,11 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="bg-white dark:bg-gray-900">
+      <footer className="bg-white dark:bg-gray-950 transition duration-500">
         <div
           className="container flex flex-col items-center justify-between p-6 mx-auto space-y-4 sm:space-y-0 sm:flex-row">
-          <p className="text-sm text-gray-600 dark:text-gray-300">&copy; {currentYear} Togs by Madio. All right
+          <p className="text-sm text-gray-600 dark:text-gray-300 transition duration-500">&copy; {currentYear} Togs by
+            Madio. All right
             reserved.</p>
 
           <div className="flex -mx-2">

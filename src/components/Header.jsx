@@ -1,7 +1,8 @@
-import {Fragment, useState} from 'react'
+import {useState} from 'react'
 import {Dialog, Popover} from '@headlessui/react'
-import {Bars3Icon, XMarkIcon,} from '@heroicons/react/24/outline'
 import {Link} from "react-router-dom";
+import {IoMdClose} from "react-icons/io";
+import {IoMenu} from "react-icons/io5";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -23,7 +24,7 @@ const Header = () => {
               onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">Open main menu</span>
-              <Bars3Icon className="h-6 w-6" aria-hidden="true"/>
+              <IoMenu className="h-6 w-6" aria-hidden="true"/>
             </button>
           </div>
           <Popover.Group className="hidden lg:flex lg:gap-x-12">
@@ -68,7 +69,7 @@ const Header = () => {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <span className="sr-only">Close menu</span>
-                <XMarkIcon className="h-6 w-6" aria-hidden="true"/>
+                <IoMdClose className="h-6 w-6" aria-hidden="true"/>
               </button>
             </div>
             <div className="mt-6 flow-root">

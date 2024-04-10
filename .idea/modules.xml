@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/toggs.iml" filepath="$PROJECT_DIR$/.idea/toggs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/togs-frontend.iml" filepath="$PROJECT_DIR$/.idea/togs-frontend.iml" />
     </modules>
   </component>
 </project>

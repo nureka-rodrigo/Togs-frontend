@@ -12,7 +12,7 @@ const Contact = () => {
       <div className="flex flex-col min-h-screen pattern">
         <Header/>
         <section className="flex-grow">
-          <div className="max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-12 mx-auto">
+          <div className="max-w-7xl px-4 sm:px-6 lg:px-8 lg:py-12 mx-auto">
             <div className="mx-auto">
               <div className="text-center">
                 <h1 className="text-3xl font-bold text-gray-800 sm:text-4xl dark:text-white transition duration-500">

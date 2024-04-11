@@ -3,6 +3,7 @@ import {Route, Routes} from "react-router-dom";
 import Error404 from "./pages/404.jsx";
 import Home from "./pages/Home.jsx";
 import Contact from './pages/Contact.jsx';
+import Faq from "./pages/Faq.jsx";
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path={"/"} element={<Home/>}/>
           <Route path={"/contact"} element={<Contact/>}/>
+          <Route path={"/faq"} element={<Faq/>}/>
           <Route path={"*"} element={<Error404/>}/>
         </Routes>
       </div>

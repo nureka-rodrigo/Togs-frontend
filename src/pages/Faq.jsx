@@ -1,7 +1,7 @@
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import {useState} from "react";
-import faqData from "../data/faqData.jsx";
+import faqData from "../data/FaqData.jsx";
 import {MdOutlineKeyboardArrowDown, MdOutlineKeyboardArrowUp} from "react-icons/md";
 
 const Faq = () => {

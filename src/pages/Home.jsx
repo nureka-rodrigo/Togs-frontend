@@ -1,6 +1,8 @@
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import ChatBotButton from "../components/ChatBotButton.jsx";
+import {GiClothes, GiLoincloth} from "react-icons/gi";
+import {FaTruck} from "react-icons/fa";
 
 const Home = () => {
   return (
@@ -102,7 +104,47 @@ const Home = () => {
             </div>
           </div>
         </div>
+
+        <div className="container px-6 pt-16 pb-8 mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div>
+              <GiClothes className="w-8 h-8 text-gray-800 dark:text-white transition duration-500"/>
+
+              <h1 className="mt-4 text-xl font-semibold text-gray-800 dark:text-white transition duration-500">Fashion
+                for Every Occasion</h1>
+
+              <p className="mt-2 text-gray-500 dark:text-gray-400 transition duration-500">Discover fashion pieces
+                designed to suit every
+                occasion, whether it&apos;s a laid-back weekend brunch or a glamorous night out. Our versatile
+                collection
+                ensures you&apos;re dressed to impress wherever you go.</p>
+            </div>
+
+            <div>
+              <GiLoincloth className="w-8 h-8 text-gray-800 dark:text-white transition duration-500"/>
+
+              <h1 className="mt-4 text-xl font-semibold text-gray-800 dark:text-white">Trendy Apparel Collection</h1>
+
+              <p className="mt-2 text-gray-500 dark:text-gray-400">Explore our latest collection of trendy apparel,
+                carefully curated to elevate your style game. From casual tees to elegant dresses, we have everything
+                you need to make a statement.</p>
+            </div>
+
+            <div>
+              <FaTruck className="w-8 h-8 text-gray-800 dark:text-white transition duration-500"/>
+
+              <h1 className="mt-4 text-xl font-semibold text-gray-800 dark:text-white transition duration-500">One-Day
+                Delivery</h1>
+
+              <p className="mt-2 text-gray-500 dark:text-gray-400 transition duration-500">We&apos;ve got you covered
+                with our one-day delivery service. Place your order and enjoy lightning-fast
+                delivery straight to your doorstep. Stay ahead of the fashion with our quick
+                delivery service.</p>
+            </div>
+          </div>
+        </div>
       </section>
+
       <Footer/>
       <ChatBotButton/>
     </div>

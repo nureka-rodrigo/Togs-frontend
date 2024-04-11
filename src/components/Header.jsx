@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import {IoMdClose} from "react-icons/io";
 import {IoMenu} from "react-icons/io5";
 import ThemeButton from "./ThemeButton.jsx";
+import {NavItems} from "../data/NavItems.jsx";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -15,7 +16,7 @@ const Header = () => {
           <div className="flex lg:flex-1">
             <Link to="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <img className="h-12 w-auto" src="./logo-2.svg" alt="Brand"/>
+              <img className="h-12 w-auto dark:invert transition duration-500" src="./logo-1.svg" alt="Brand"/>
             </Link>
           </div>
           <div className="flex lg:hidden">
@@ -29,22 +30,13 @@ const Header = () => {
             </button>
           </div>
           <Popover.Group className="hidden lg:flex lg:gap-x-12">
-            <Link to="#"
-                  className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-300 transition duration-500">
-              Products
-            </Link>
-            <Link to="#"
-                  className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-300 transition duration-500">
-              Features
-            </Link>
-            <Link to="#"
-                  className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-300 transition duration-500">
-              Marketplace
-            </Link>
-            <Link to="#"
-                  className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-300 transition duration-500">
-              Company
-            </Link>
+            {NavItems.map((navItem) => (
+              <Link key={navItem.id}
+                    to={navItem.link}
+                    className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-300 transition duration-500 hover:text-primary-600 dark:hover:text-primary-600">
+                {navItem.text}
+              </Link>
+            ))}
           </Popover.Group>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <Link to="login"
@@ -83,35 +75,18 @@ const Header = () => {
             <div className="mt-6 flow-root">
               <div className="-my-6 divide-y divide-gray-500/10">
                 <div className="space-y-2 py-6">
-                  <Link
-                    to="#"
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-gray-300 hover:bg-gray-50 transition duration-500"
-                  >
-                    Products
-                  </Link>
-                  <Link
-                    to="#"
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-gray-300 hover:bg-gray-50 transition duration-500"
-                  >
-                    Features
-                  </Link>
-                  <Link
-                    to="#"
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-gray-300 hover:bg-gray-50 transition duration-500"
-                  >
-                    Marketplace
-                  </Link>
-                  <Link
-                    to="#"
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-gray-300 hover:bg-gray-50 transition duration-500"
-                  >
-                    Company
-                  </Link>
+                  {NavItems.map((navItem) => (
+                    <Link key={navItem.id}
+                          to={navItem.link}
+                          className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-900 hover:text-primary-600 dark:hover:text-primary-600 transition duration-500">
+                      {navItem.text}
+                    </Link>
+                  ))}
                 </div>
                 <div className="py-6">
                   <Link
                     to="login"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 dark:text-gray-300 hover:bg-gray-50 transition duration-500"
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-900 transition duration-500"
                   >
                     Log in
                   </Link>

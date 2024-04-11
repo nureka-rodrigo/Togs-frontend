@@ -1,8 +1,8 @@
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
-import ChatBotButton from "../components/ChatBotButton.jsx";
 import {GiClothes, GiLoincloth} from "react-icons/gi";
 import {FaTruck} from "react-icons/fa";
+import {Link} from "react-router-dom";
 
 const Home = () => {
   return (
@@ -93,12 +93,12 @@ const Home = () => {
                     </div>
                   </div>
 
-                  <a
-                    href="#"
+                  <Link
+                    to="/collections"
                     className="inline-block rounded-md border border-transparent bg-primary-600 px-8 py-3 text-center font-medium text-white hover:bg-primary-800 transition duration-500"
                   >
                     Shop Collection
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -123,9 +123,11 @@ const Home = () => {
             <div>
               <GiLoincloth className="w-8 h-8 text-gray-800 dark:text-white transition duration-500"/>
 
-              <h1 className="mt-4 text-xl font-semibold text-gray-800 dark:text-white">Trendy Apparel Collection</h1>
+              <h1 className="mt-4 text-xl font-semibold text-gray-800 dark:text-white transition duration-500">Trendy
+                Apparel Collection</h1>
 
-              <p className="mt-2 text-gray-500 dark:text-gray-400">Explore our latest collection of trendy apparel,
+              <p className="mt-2 text-gray-500 dark:text-gray-400 transition duration-500">Explore our latest collection
+                of trendy apparel,
                 carefully curated to elevate your style game. From casual tees to elegant dresses, we have everything
                 you need to make a statement.</p>
             </div>
@@ -146,7 +148,6 @@ const Home = () => {
       </section>
 
       <Footer/>
-      <ChatBotButton/>
     </div>
   )
 }

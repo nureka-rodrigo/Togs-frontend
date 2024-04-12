@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import {Dialog, Popover} from '@headlessui/react'
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {IoMdClose} from "react-icons/io";
 import {IoMenu} from "react-icons/io5";
 import ThemeButton from "./ThemeButton.jsx";
@@ -8,6 +8,8 @@ import {NavItems} from "../data/NavItems.jsx";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  const lastPart = useLocation().pathname;
 
   return (
     <>
@@ -33,7 +35,11 @@ const Header = () => {
             {NavItems.map((navItem) => (
               <Link key={navItem.id}
                     to={navItem.link}
-                    className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-300 transition duration-500 hover:text-primary-600 dark:hover:text-primary-600">
+                    className={`text-sm font-semibold leading-6 text-gray-900 dark:text-gray-300 transition duration-500 hover:text-primary-600 dark:hover:text-primary-600 ${
+                      lastPart === navItem.link
+                        ? "text-primary-600 dark:text-primary-600"
+                        : ""
+                    }`}>
                 {navItem.text}
               </Link>
             ))}

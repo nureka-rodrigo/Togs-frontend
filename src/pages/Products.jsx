@@ -1,9 +1,9 @@
 import {Fragment, useState} from 'react'
 import {Dialog, Disclosure, Menu, Transition} from '@headlessui/react'
 import {ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon} from '@heroicons/react/20/solid'
-import {IoMenu} from "react-icons/io5";
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
+import {IoMdClose} from "react-icons/io";
 
 const sortOptions = [
   {name: 'Most Popular', href: '#', current: true},
@@ -144,7 +144,7 @@ const Products = () => {
                         onClick={() => setMobileFiltersOpen(false)}
                       >
                         <span className="sr-only">Close menu</span>
-                        <IoMenu className="h-6 w-6" aria-hidden="true"/>
+                        <IoMdClose className="h-6 w-6 text-gray-500" aria-hidden="true"/>
                       </button>
                     </div>
 

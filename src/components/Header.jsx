@@ -48,7 +48,7 @@ const Header = () => {
               onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">Open main menu</span>
-              <IoMenu className="h-6 w-6" aria-hidden="true"/>
+              <IoMenu className="h-6 w-6 text-gray-500" aria-hidden="true"/>
             </button>
           </div>
           <Popover.Group className="hidden lg:flex lg:gap-x-12">
@@ -107,7 +107,7 @@ const Header = () => {
                 className="rounded-md text-gray-700 pr-7"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                <IoMdClose className="h-6 w-6" aria-hidden="true"/>
+                <IoMdClose className="h-6 w-6 text-gray-500" aria-hidden="true"/>
               </button>
               <ThemeButton/>
             </div>

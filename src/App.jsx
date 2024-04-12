@@ -6,6 +6,7 @@ import Contact from './pages/Contact.jsx';
 import Faq from "./pages/Faq.jsx";
 import Collections from "./pages/Collections.jsx";
 import Products from "./pages/Products.jsx";
+import Product from "./pages/Product.jsx";
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           <Route path={"/"} element={<Home/>}/>
           <Route path={"/collections"} element={<Collections/>}/>
           <Route path={"/products"} element={<Products/>}/>
+          <Route path={"/product"} element={<Product/>}/>
           <Route path={"/contact"} element={<Contact/>}/>
           <Route path={"/faq"} element={<Faq/>}/>
           <Route path={"*"} element={<Error404/>}/>

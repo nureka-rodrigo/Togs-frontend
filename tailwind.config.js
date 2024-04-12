@@ -20,7 +20,10 @@ export default {
           900: '#701a75',
           950: '#4a044e',
         },
-      }
+      },
+      gridTemplateRows: {
+        '[auto,auto,1fr]': 'auto auto 1fr',
+      },
     },
   },
   plugins: [

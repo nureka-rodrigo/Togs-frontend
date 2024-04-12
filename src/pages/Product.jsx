@@ -274,6 +274,10 @@ const Product = () => {
                   </RadioGroup>
                 </div>
 
+                <div className="pt-10">
+                  <input type="text" placeholder="Quantity"
+                         className="block w-full py-2 text-gray-700 placeholder-gray-400/70 bg-white border border-gray-200 rounded-lg px-5 rtl:pr-11 rtl:pl-5 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"/>
+                </div>
                 <button
                   type="submit"
                   className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-primary-600 px-8 py-3 text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"

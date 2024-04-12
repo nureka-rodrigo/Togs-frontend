@@ -108,12 +108,13 @@ const Home = () => {
         <div className="container px-6 pt-16 pb-8 mx-auto max-w-7xl">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             <div>
-              <GiClothes className="w-8 h-8 text-gray-800 dark:text-white transition duration-500"/>
+              <GiClothes className="w-8 h-8 text-gray-600 dark:text-gray-400 transition duration-500"/>
 
-              <h1 className="mt-4 text-xl font-semibold text-gray-800 dark:text-white transition duration-500">Fashion
+              <h1
+                className="mt-4 text-xl font-semibold text-gray-600 dark:text-gray-400 transition duration-500">Fashion
                 for Every Occasion</h1>
 
-              <p className="mt-2 text-gray-500 dark:text-gray-400 transition duration-500">Discover fashion pieces
+              <p className="mt-2 text-gray-600 dark:text-gray-400 transition duration-500">Discover fashion pieces
                 designed to suit every
                 occasion, whether it&apos;s a laid-back weekend brunch or a glamorous night out. Our versatile
                 collection
@@ -121,9 +122,9 @@ const Home = () => {
             </div>
 
             <div>
-              <GiLoincloth className="w-8 h-8 text-gray-800 dark:text-white transition duration-500"/>
+              <GiLoincloth className="w-8 h-8 text-gray-600 dark:text-gray-400 transition duration-500"/>
 
-              <h1 className="mt-4 text-xl font-semibold text-gray-800 dark:text-white transition duration-500">Trendy
+              <h1 className="mt-4 text-xl font-semibold text-gray-600 dark:text-gray-400 transition duration-500">Trendy
                 Apparel Collection</h1>
 
               <p className="mt-2 text-gray-500 dark:text-gray-400 transition duration-500">Explore our latest collection
@@ -133,9 +134,10 @@ const Home = () => {
             </div>
 
             <div>
-              <FaTruck className="w-8 h-8 text-gray-800 dark:text-white transition duration-500"/>
+              <FaTruck className="w-8 h-8 text-gray-600 dark:text-gray-400 transition duration-500"/>
 
-              <h1 className="mt-4 text-xl font-semibold text-gray-800 dark:text-white transition duration-500">One-Day
+              <h1
+                className="mt-4 text-xl font-semibold text-gray-600 dark:text-gray-400 transition duration-500">One-Day
                 Delivery</h1>
 
               <p className="mt-2 text-gray-500 dark:text-gray-400 transition duration-500">We&apos;ve got you covered

@@ -1,9 +1,11 @@
 import {useState} from 'react'
 import {Dialog, Popover} from '@headlessui/react'
+import {ShoppingBagIcon} from '@heroicons/react/24/outline'
 import {Link, useLocation} from "react-router-dom";
 import {IoMdClose} from "react-icons/io";
 import {IoMenu} from "react-icons/io5";
 import ThemeButton from "./ThemeButton.jsx";
+import Cart from "./Cart.jsx";
 
 const NavItems = [
   {
@@ -25,6 +27,7 @@ const NavItems = [
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [cartOpen, setCartOpen] = useState(false)
 
   const lastPart = useLocation().pathname;
 
@@ -69,7 +72,20 @@ const Header = () => {
                   className="text-white bg-primary-600 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none dark:focus:ring-primary-800 transition duration-500">Get
               started</Link>
           </div>
-          <div className="px-0 md:px-4  lg:px-10 pt-3 hidden lg:block">
+          <div>
+            <div className="ml-4 flow-root lg:ml-6">
+              <button onClick={() => setCartOpen(true)} className="group -m-2 flex items-center p-2">
+                <ShoppingBagIcon
+                  className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                  aria-hidden="true"
+                />
+                <span
+                  className="text-sm font-medium text-gray-900 dark:text-gray-300 group-hover:text-gray-500">0</span>
+              </button>
+              <Cart open={cartOpen} setOpen={setCartOpen}/>
+            </div>
+          </div>
+          <div className="pl-6 pr-2 pt-3 lg:pt-2 hidden lg:block">
             <ThemeButton/>
           </div>
         </nav>
@@ -82,18 +98,18 @@ const Header = () => {
                 <span className="sr-only">Your Company</span>
                 <img
                   className="h-12 w-auto"
-                  src="./logo-2.svg"
+                  src="./logo-1.svg"
                   alt=""
                 />
               </Link>
               <button
                 type="button"
-                className="-m-2.5 rounded-md p-2.5 text-gray-700"
+                className="rounded-md text-gray-700 pr-7"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                <span className="sr-only">Close menu</span>
                 <IoMdClose className="h-6 w-6" aria-hidden="true"/>
               </button>
+              <ThemeButton/>
             </div>
             <div className="mt-6 flow-root">
               <div className="-my-6 divide-y divide-gray-500/10">
@@ -123,9 +139,6 @@ const Header = () => {
                   >
                     Get started
                   </Link>
-                </div>
-                <div className="flex justify-center items-center py-6">
-                  <ThemeButton/>
                 </div>
               </div>
             </div>

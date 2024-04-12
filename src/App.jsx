@@ -7,6 +7,7 @@ import Faq from "./pages/Faq.jsx";
 import Collections from "./pages/Collections.jsx";
 import Products from "./pages/Products.jsx";
 import Product from "./pages/Product.jsx";
+import SignIn from "./pages/SignIn.jsx";
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
       <div className="bg-white dark:bg-gray-950 transition duration-500">
         <Routes>
           <Route path={"/"} element={<Home/>}/>
+          <Route path={"/login"} element={<SignIn/>}/>
           <Route path={"/collections"} element={<Collections/>}/>
           <Route path={"/products"} element={<Products/>}/>
           <Route path={"/product"} element={<Product/>}/>

@@ -30,7 +30,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-white dark:bg-gray-950 transition duration-500 pattern">
+      <header className="transition duration-500">
         <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:pr-0" aria-label="Global">
           <div className="flex lg:flex-1">
             <Link to="/" className="-m-1.5 p-1.5">

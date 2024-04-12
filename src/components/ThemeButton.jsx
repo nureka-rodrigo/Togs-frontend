@@ -1,5 +1,10 @@
 import {useTheme} from "../hooks/ThemeProvider.jsx";
-import {ThemeIcons} from "../data/ThemeIcons.jsx";
+import {MdDarkMode, MdSunny} from "react-icons/md";
+
+const ThemeIcons = {
+  dark: <MdDarkMode className="h-5 w-5 text-white"/>,
+  light: <MdSunny className="h-5 w-5 text-gray-900"/>,
+};
 
 const ThemeButton = () => {
   const {currentTheme, toggleTheme} = useTheme();

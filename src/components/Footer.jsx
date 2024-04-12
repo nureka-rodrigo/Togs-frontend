@@ -7,7 +7,7 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="transition duration-500">
+      <footer className="transition duration-500 mt-auto">
         <div
           className="container flex flex-col items-center justify-between p-6 mx-auto max-w-7xl space-y-4 sm:space-y-0 sm:flex-row">
           <p className="text-sm text-gray-600 dark:text-gray-300 transition duration-500">&copy; {currentYear} Togs by

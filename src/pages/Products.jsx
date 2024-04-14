@@ -1,116 +1,129 @@
-import {Fragment, useState} from 'react'
-import {Dialog, Disclosure, Menu, Transition} from '@headlessui/react'
-import {ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon} from '@heroicons/react/20/solid'
+import { Fragment, useState } from "react";
+import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
+import {
+  ChevronDownIcon,
+  FunnelIcon,
+  MinusIcon,
+  PlusIcon,
+} from "@heroicons/react/20/solid";
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
-import {IoMdClose} from "react-icons/io";
+import { IoMdClose } from "react-icons/io";
 
 const sortOptions = [
-  {name: 'Most Popular', href: '#', current: true},
-  {name: 'Best Rating', href: '#', current: false},
-  {name: 'Newest', href: '#', current: false},
-  {name: 'Price: Low to High', href: '#', current: false},
-  {name: 'Price: High to Low', href: '#', current: false},
-]
+  { name: "Most Popular", href: "#", current: true },
+  { name: "Best Rating", href: "#", current: false },
+  { name: "Newest", href: "#", current: false },
+  { name: "Price: Low to High", href: "#", current: false },
+  { name: "Price: High to Low", href: "#", current: false },
+];
 const subCategories = [
-  {name: 'Totes', href: '#'},
-  {name: 'Backpacks', href: '#'},
-  {name: 'Travel Bags', href: '#'},
-  {name: 'Hip Bags', href: '#'},
-  {name: 'Laptop Sleeves', href: '#'},
-]
+  { name: "Totes", href: "#" },
+  { name: "Backpacks", href: "#" },
+  { name: "Travel Bags", href: "#" },
+  { name: "Hip Bags", href: "#" },
+  { name: "Laptop Sleeves", href: "#" },
+];
 const filters = [
   {
-    id: 'color',
-    name: 'Color',
+    id: "color",
+    name: "Color",
     options: [
-      {value: 'white', label: 'White', checked: false},
-      {value: 'beige', label: 'Beige', checked: false},
-      {value: 'blue', label: 'Blue', checked: true},
-      {value: 'brown', label: 'Brown', checked: false},
-      {value: 'green', label: 'Green', checked: false},
-      {value: 'purple', label: 'Purple', checked: false},
+      { value: "white", label: "White", checked: false },
+      { value: "beige", label: "Beige", checked: false },
+      { value: "blue", label: "Blue", checked: true },
+      { value: "brown", label: "Brown", checked: false },
+      { value: "green", label: "Green", checked: false },
+      { value: "purple", label: "Purple", checked: false },
     ],
   },
   {
-    id: 'category',
-    name: 'Category',
+    id: "category",
+    name: "Category",
     options: [
-      {value: 'new-arrivals', label: 'New Arrivals', checked: false},
-      {value: 'sale', label: 'Sale', checked: false},
-      {value: 'travel', label: 'Travel', checked: true},
-      {value: 'organization', label: 'Organization', checked: false},
-      {value: 'accessories', label: 'Accessories', checked: false},
+      { value: "new-arrivals", label: "New Arrivals", checked: false },
+      { value: "sale", label: "Sale", checked: false },
+      { value: "travel", label: "Travel", checked: true },
+      { value: "organization", label: "Organization", checked: false },
+      { value: "accessories", label: "Accessories", checked: false },
     ],
   },
   {
-    id: 'size',
-    name: 'Size',
+    id: "size",
+    name: "Size",
     options: [
-      {value: '2l', label: '2L', checked: false},
-      {value: '6l', label: '6L', checked: false},
-      {value: '12l', label: '12L', checked: false},
-      {value: '18l', label: '18L', checked: false},
-      {value: '20l', label: '20L', checked: false},
-      {value: '40l', label: '40L', checked: true},
+      { value: "2l", label: "2L", checked: false },
+      { value: "6l", label: "6L", checked: false },
+      { value: "12l", label: "12L", checked: false },
+      { value: "18l", label: "18L", checked: false },
+      { value: "20l", label: "20L", checked: false },
+      { value: "40l", label: "40L", checked: true },
     ],
   },
-]
+];
 
 const products = [
   {
     id: 1,
-    name: 'Basic Tee',
-    href: '/product',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
+    name: "Basic Tee",
+    href: "/product",
+    imageSrc:
+      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
-    color: 'Black',
+    price: "$35",
+    color: "Black",
   },
   {
     id: 2,
-    name: 'Basic Tee',
-    href: '/product',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
+    name: "Basic Tee",
+    href: "/product",
+    imageSrc:
+      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
-    color: 'Black',
+    price: "$35",
+    color: "Black",
   },
   {
     id: 3,
-    name: 'Basic Tee',
-    href: '/product',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
+    name: "Basic Tee",
+    href: "/product",
+    imageSrc:
+      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
-    color: 'Black',
+    price: "$35",
+    color: "Black",
   },
   {
     id: 4,
-    name: 'Basic Tee',
-    href: '/product',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
+    name: "Basic Tee",
+    href: "/product",
+    imageSrc:
+      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
-    color: 'Black',
+    price: "$35",
+    color: "Black",
   },
-]
+];
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 const Products = () => {
-  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   return (
     <>
       <div className="flex flex-col min-h-screen pattern">
-        <Header/>
+        <Header />
         <section className="flex-grow">
           {/* Mobile filter dialog */}
           <Transition.Root show={mobileFiltersOpen} as={Fragment}>
-            <Dialog as="div" className="relative z-40 lg:hidden" onClose={setMobileFiltersOpen}>
+            <Dialog
+              as="div"
+              className="relative z-40 lg:hidden"
+              onClose={setMobileFiltersOpen}
+            >
               <Transition.Child
                 as={Fragment}
                 enter="transition-opacity ease-linear duration-300"
@@ -120,7 +133,7 @@ const Products = () => {
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <div className="fixed inset-0 bg-white dark:bg-gray-950 bg-opacity-25 transition duration-500"/>
+                <div className="fixed inset-0 bg-white dark:bg-gray-950 bg-opacity-25 transition duration-500" />
               </Transition.Child>
 
               <div className="fixed inset-0 z-40 flex">
@@ -133,26 +146,31 @@ const Products = () => {
                   leaveFrom="translate-x-0"
                   leaveTo="translate-x-full"
                 >
-                  <Dialog.Panel
-                    className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white dark:bg-gray-950 py-4 pb-12 shadow-xl transition duration-500">
+                  <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white dark:bg-gray-950 py-4 pb-12 shadow-xl transition duration-500">
                     <div className="flex items-center justify-between px-4">
-                      <h2
-                        className="text-lg font-medium text-gray-600 dark:text-gray-400 transition duration-500">Filters</h2>
+                      <h2 className="text-lg font-medium text-gray-600 dark:text-gray-400 transition duration-500">
+                        Filters
+                      </h2>
                       <button
                         type="button"
                         className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white dark:bg-gray-950 p-2 text-gray-600 dark:text-gray-400 transition duration-500"
                         onClick={() => setMobileFiltersOpen(false)}
                       >
                         <span className="sr-only">Close menu</span>
-                        <IoMdClose className="h-6 w-6 text-gray-500" aria-hidden="true"/>
+                        <IoMdClose
+                          className="h-6 w-6 text-gray-500"
+                          aria-hidden="true"
+                        />
                       </button>
                     </div>
 
                     {/* Filters */}
                     <form className="mt-4 border-t border-gray-200">
                       <h3 className="sr-only">Categories</h3>
-                      <ul role="list"
-                          className="px-2 py-3 font-medium text-gray-600 dark:text-gray-400 transition duration-500">
+                      <ul
+                        role="list"
+                        className="px-2 py-3 font-medium text-gray-600 dark:text-gray-400 transition duration-500"
+                      >
                         {subCategories.map((category) => (
                           <li key={category.name}>
                             <a href={category.href} className="block px-2 py-3">
@@ -163,27 +181,40 @@ const Products = () => {
                       </ul>
 
                       {filters.map((section) => (
-                        <Disclosure as="div" key={section.id} className="border-t border-gray-200 px-4 py-6">
-                          {({open}) => (
+                        <Disclosure
+                          as="div"
+                          key={section.id}
+                          className="border-t border-gray-200 px-4 py-6"
+                        >
+                          {({ open }) => (
                             <>
                               <h3 className="-mx-2 -my-3 flow-root">
-                                <Disclosure.Button
-                                  className="flex w-full items-center justify-between bg-white dark:bg-gray-950 px-2 py-3 text-gray-400 hover:text-gray-500 transition duration-500">
-                                  <span
-                                    className="font-medium text-gray-600 dark:text-gray-400 transition duration-500">{section.name}</span>
+                                <Disclosure.Button className="flex w-full items-center justify-between bg-white dark:bg-gray-950 px-2 py-3 text-gray-400 hover:text-gray-500 transition duration-500">
+                                  <span className="font-medium text-gray-600 dark:text-gray-400 transition duration-500">
+                                    {section.name}
+                                  </span>
                                   <span className="ml-6 flex items-center">
-                                  {open ? (
-                                    <MinusIcon className="h-5 w-5" aria-hidden="true"/>
-                                  ) : (
-                                    <PlusIcon className="h-5 w-5" aria-hidden="true"/>
-                                  )}
-                                </span>
+                                    {open ? (
+                                      <MinusIcon
+                                        className="h-5 w-5"
+                                        aria-hidden="true"
+                                      />
+                                    ) : (
+                                      <PlusIcon
+                                        className="h-5 w-5"
+                                        aria-hidden="true"
+                                      />
+                                    )}
+                                  </span>
                                 </Disclosure.Button>
                               </h3>
                               <Disclosure.Panel className="pt-6">
                                 <div className="space-y-6">
                                   {section.options.map((option, optionIdx) => (
-                                    <div key={option.value} className="flex items-center">
+                                    <div
+                                      key={option.value}
+                                      className="flex items-center"
+                                    >
                                       <input
                                         id={`filter-mobile-${section.id}-${optionIdx}`}
                                         name={`${section.id}[]`}
@@ -218,8 +249,7 @@ const Products = () => {
               <div className="flex items-center">
                 <Menu as="div" className="relative inline-block text-left">
                   <div>
-                    <Menu.Button
-                      className="group inline-flex justify-center text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition duration-500">
+                    <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300 transition duration-500">
                       Sort
                       <ChevronDownIcon
                         className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-600 dark:text-gray-400 group-hover:text-gray-500 transition duration-500"
@@ -237,18 +267,19 @@ const Products = () => {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items
-                      className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white dark:bg-gray-950 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none transition duration-500">
+                    <Menu.Items className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white dark:bg-gray-950 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none transition duration-500">
                       <div className="py-1">
                         {sortOptions.map((option) => (
                           <Menu.Item key={option.name}>
-                            {({active}) => (
+                            {({ active }) => (
                               <a
                                 href={option.href}
                                 className={classNames(
-                                  option.current ? 'font-medium text-gray-600 dark:text-gray-400' : 'text-gray-500',
-                                  active ? 'bg-gray-100 dark:bg-gray-900' : '',
-                                  'block px-4 py-2 text-sm'
+                                  option.current
+                                    ? "font-medium text-gray-600 dark:text-gray-400"
+                                    : "text-gray-500",
+                                  active ? "bg-gray-100 dark:bg-gray-900" : "",
+                                  "block px-4 py-2 text-sm"
                                 )}
                               >
                                 {option.name}
@@ -267,7 +298,7 @@ const Products = () => {
                   onClick={() => setMobileFiltersOpen(true)}
                 >
                   <span className="sr-only">Filters</span>
-                  <FunnelIcon className="h-5 w-5" aria-hidden="true"/>
+                  <FunnelIcon className="h-5 w-5" aria-hidden="true" />
                 </button>
               </div>
             </div>
@@ -281,8 +312,10 @@ const Products = () => {
                 {/* Filters */}
                 <form className="hidden lg:block">
                   <h3 className="sr-only">Categories</h3>
-                  <ul role="list"
-                      className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-600 dark:text-gray-400 transition duration-500">
+                  <ul
+                    role="list"
+                    className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-600 dark:text-gray-400 transition duration-500"
+                  >
                     {subCategories.map((category) => (
                       <li key={category.name}>
                         <a href={category.href}>{category.name}</a>
@@ -291,27 +324,40 @@ const Products = () => {
                   </ul>
 
                   {filters.map((section) => (
-                    <Disclosure as="div" key={section.id} className="border-b border-gray-200 py-6">
-                      {({open}) => (
+                    <Disclosure
+                      as="div"
+                      key={section.id}
+                      className="border-b border-gray-200 py-6"
+                    >
+                      {({ open }) => (
                         <>
                           <h3 className="-my-3 flow-root">
-                            <Disclosure.Button
-                              className="flex w-full items-center justify-between py-3 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-500 transition duration-500">
-                              <span
-                                className="font-medium text-gray-600 dark:text-gray-400 transition duration-500">{section.name}</span>
+                            <Disclosure.Button className="flex w-full items-center justify-between py-3 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-500 transition duration-500">
+                              <span className="font-medium text-gray-600 dark:text-gray-400 transition duration-500">
+                                {section.name}
+                              </span>
                               <span className="ml-6 flex items-center">
-                              {open ? (
-                                <MinusIcon className="h-5 w-5" aria-hidden="true"/>
-                              ) : (
-                                <PlusIcon className="h-5 w-5" aria-hidden="true"/>
-                              )}
-                            </span>
+                                {open ? (
+                                  <MinusIcon
+                                    className="h-5 w-5"
+                                    aria-hidden="true"
+                                  />
+                                ) : (
+                                  <PlusIcon
+                                    className="h-5 w-5"
+                                    aria-hidden="true"
+                                  />
+                                )}
+                              </span>
                             </Disclosure.Button>
                           </h3>
                           <Disclosure.Panel className="pt-6">
                             <div className="space-y-4">
                               {section.options.map((option, optionIdx) => (
-                                <div key={option.value} className="flex items-center">
+                                <div
+                                  key={option.value}
+                                  className="flex items-center"
+                                >
                                   <input
                                     id={`filter-${section.id}-${optionIdx}`}
                                     name={`${section.id}[]`}
@@ -343,8 +389,7 @@ const Products = () => {
                     <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                       {products.map((product) => (
                         <div key={product.id} className="group relative">
-                          <div
-                            className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                          <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                             <img
                               src={product.imageSrc}
                               alt={product.imageAlt}
@@ -355,15 +400,20 @@ const Products = () => {
                             <div>
                               <h3 className="text-sm text-gray-600 dark:text-gray-400 transition duration-500">
                                 <a href={product.href}>
-                                  <span aria-hidden="true" className="absolute inset-0"/>
+                                  <span
+                                    aria-hidden="true"
+                                    className="absolute inset-0"
+                                  />
                                   {product.name}
                                 </a>
                               </h3>
-                              <p
-                                className="mt-1 text-sm text-gray-600 dark:text-gray-400 transition duration-500">{product.color}</p>
+                              <p className="mt-1 text-sm text-gray-600 dark:text-gray-400 transition duration-500">
+                                {product.color}
+                              </p>
                             </div>
-                            <p
-                              className="text-sm font-medium text-gray-600 dark:text-gray-400 transition duration-500">{product.price}</p>
+                            <p className="text-sm font-medium text-gray-600 dark:text-gray-400 transition duration-500">
+                              {product.price}
+                            </p>
                           </div>
                         </div>
                       ))}
@@ -372,29 +422,35 @@ const Products = () => {
 
                   {/* Paginations */}
                   <div className="w-full pt-10">
-                    <div
-                      className="container flex flex-col items-center px-6 mx-auto space-y-6 sm:flex-row sm:justify-between sm:space-y-0 ">
+                    <div className="container flex flex-col items-center px-6 mx-auto space-y-6 sm:flex-row sm:justify-between sm:space-y-0 ">
                       <div className="-mx-2">
-                        <a href="#"
-                           className="inline-flex items-center justify-center px-4 py-1 mx-2 text-gray-700 transform bg-gray-100 rounded-lg dark:text-white dark:bg-gray-700 transition duration-500">
+                        <a
+                          href="#"
+                          className="inline-flex items-center justify-center px-4 py-1 mx-2 text-gray-700 transform bg-gray-100 rounded-lg dark:text-white dark:bg-gray-700 transition duration-500"
+                        >
                           1
                         </a>
 
-                        <a href="#"
-                           className="inline-flex items-center justify-center px-4 py-1 mx-2 text-gray-700 transition-colors duration-500 transform rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                        <a
+                          href="#"
+                          className="inline-flex items-center justify-center px-4 py-1 mx-2 text-gray-700 transition-colors duration-500 transform rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                        >
                           2
                         </a>
 
-                        <a href="#"
-                           className="inline-flex items-center justify-center px-4 py-1 mx-2 text-gray-700 transition-colors duration-500 transform rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                        <a
+                          href="#"
+                          className="inline-flex items-center justify-center px-4 py-1 mx-2 text-gray-700 transition-colors duration-500 transform rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                        >
                           3
                         </a>
                       </div>
 
                       <div className="text-gray-500 dark:text-gray-400 transition duration-500">
-                        <span
-                          className="font-medium text-gray-700 dark:text-gray-100 transition duration-500">1 - 25</span> of
-                        77 records
+                        <span className="font-medium text-gray-700 dark:text-gray-100 transition duration-500">
+                          1 - 25
+                        </span>{" "}
+                        of 77 records
                       </div>
                     </div>
                   </div>
@@ -403,10 +459,10 @@ const Products = () => {
             </section>
           </main>
         </section>
-        <Footer/>
+        <Footer />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Products
+export default Products;

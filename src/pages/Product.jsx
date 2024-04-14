@@ -340,9 +340,9 @@ const Product = () => {
                   <button
                     type="button"
                     onClick={handleDecrement}
-                    className="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-2.5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
+                    className="bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-2.5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
                   >
-                    <FaMinus className="w-3 h-3 text-gray-900 dark:text-white"/>
+                    <FaMinus className="w-3 h-3 text-gray-600 dark:text-gray-300"/>
                   </button>
                   {/* Quantity input */}
                   <input
@@ -357,9 +357,9 @@ const Product = () => {
                   <button
                     type="button"
                     onClick={handleIncrement}
-                    className="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-2.5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
+                    className="bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-2.5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
                   >
-                    <FaPlus className="w-3 h-3 text-gray-900 dark:text-white"/>
+                    <FaPlus className="w-3 h-3 text-gray-600 dark:text-gray-300"/>
                   </button>
                 </div>
 

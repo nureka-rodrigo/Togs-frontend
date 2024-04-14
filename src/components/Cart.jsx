@@ -3,6 +3,7 @@ import {Dialog, Transition} from "@headlessui/react";
 import {XMarkIcon} from "@heroicons/react/24/outline";
 import PropTypes from "prop-types";
 import {useCart} from "../hooks/CartProvider.jsx";
+import {Link} from "react-router-dom";
 
 const Cart = ({ open, setOpen }) => {
   const {cartItems, getTotalPrice, removeItemFromCart, getTotalItemsInCart} = useCart();
@@ -81,9 +82,9 @@ const Cart = ({ open, setOpen }) => {
                                     <div
                                       className="flex justify-between text-base font-medium text-gray-900 dark:text-gray-300 transition duration-500">
                                       <h3>
-                                        <a href={item.href}>
+                                        <Link to={item.href}>
                                           {item.name}
-                                        </a>
+                                        </Link>
                                       </h3>
                                       <p className="ml-4">${item.price}</p>
                                     </div>
@@ -132,12 +133,11 @@ const Cart = ({ open, setOpen }) => {
                         <p>${getTotalPrice()}</p>
                       </div>
                       <div className="mt-6">
-                        <a
-                          href="#"
+                        <button
                           className="flex items-center justify-center rounded-md border border-transparent bg-primary-600 px-6 py-2.5 text-base font-medium text-white shadow-sm hover:bg-primary-800"
                         >
                           Checkout
-                        </a>
+                        </button>
                       </div>
                       <div
                         className="mt-6 flex justify-center text-center text-sm text-gray-900 dark:text-gray-300 transition duration-500">

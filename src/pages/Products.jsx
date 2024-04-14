@@ -4,6 +4,7 @@ import {ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon,} from "@heroicons/reac
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import {IoMdClose} from "react-icons/io";
+import {Link} from "react-router-dom";
 
 const sortOptions = [
   {name: "Best Rating", href: "#", current: true},
@@ -246,8 +247,8 @@ const Products = () => {
                         {sortOptions.map((option) => (
                           <Menu.Item key={option.name}>
                             {({ active }) => (
-                              <a
-                                href={option.href}
+                              <Link
+                                to={option.href}
                                 className={classNames(
                                   option.current
                                     ? "font-medium text-gray-600 dark:text-gray-400"
@@ -257,7 +258,7 @@ const Products = () => {
                                 )}
                               >
                                 {option.name}
-                              </a>
+                              </Link>
                             )}
                           </Menu.Item>
                         ))}
@@ -361,13 +362,13 @@ const Products = () => {
                           <div className="mt-4 flex justify-between">
                             <div>
                               <h3 className="text-sm text-gray-600 dark:text-gray-400 transition duration-500">
-                                <a href={product.href}>
+                                <Link to={product.href}>
                                   <span
                                     aria-hidden="true"
                                     className="absolute inset-0"
                                   />
                                   {product.name}
-                                </a>
+                                </Link>
                               </h3>
                               <p className="mt-1 text-sm text-gray-600 dark:text-gray-400 transition duration-500">
                                 {product.color}
@@ -386,26 +387,26 @@ const Products = () => {
                   <div className="w-full pt-10">
                     <div className="container flex flex-col items-center px-6 mx-auto space-y-6 sm:flex-row sm:justify-between sm:space-y-0 ">
                       <div className="-mx-2">
-                        <a
-                          href="#"
+                        <Link
+                          to="#"
                           className="inline-flex items-center justify-center px-4 py-1 mx-2 text-gray-700 transform bg-gray-100 rounded-lg dark:text-white dark:bg-gray-700 transition duration-500"
                         >
                           1
-                        </a>
+                        </Link>
 
-                        <a
-                          href="#"
+                        <Link
+                          to="#"
                           className="inline-flex items-center justify-center px-4 py-1 mx-2 text-gray-700 transition-colors duration-500 transform rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                         >
                           2
-                        </a>
+                        </Link>
 
-                        <a
-                          href="#"
+                        <Link
+                          to="#"
                           className="inline-flex items-center justify-center px-4 py-1 mx-2 text-gray-700 transition-colors duration-500 transform rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                         >
                           3
-                        </a>
+                        </Link>
                       </div>
 
                       <div className="text-gray-500 dark:text-gray-400 transition duration-500">

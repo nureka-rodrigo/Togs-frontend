@@ -1,5 +1,6 @@
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
+import {Link} from "react-router-dom";
 
 const collections = [
   {
@@ -59,10 +60,10 @@ const Collections = () => {
                     />
                   </div>
                   <h3 className="mt-6 text-sm text-gray-500 dark:text-gray-500 transition duration-500">
-                    <a href={callout.href}>
+                    <Link to={callout.href}>
                       <span className="absolute inset-0" />
                       {callout.name}
-                    </a>
+                    </Link>
                   </h3>
                   <p className="text-base font-semibold text-gray-900 dark:text-white transition duration-500">
                     {callout.description}
@@ -88,10 +89,10 @@ const Collections = () => {
                     />
                   </div>
                   <h3 className="mt-6 text-sm text-gray-500 dark:text-gray-500 transition duration-500">
-                    <a href={callout.href}>
+                    <Link to={callout.href}>
                       <span className="absolute inset-0" />
                       {callout.name}
-                    </a>
+                    </Link>
                   </h3>
                   <p className="text-base font-semibold text-gray-900 dark:text-white transition duration-500">
                     {callout.description}

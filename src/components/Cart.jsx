@@ -1,18 +1,27 @@
-import {Fragment} from "react";
+import {Fragment, useState} from "react";
 import {Dialog, Transition} from "@headlessui/react";
 import {XMarkIcon} from "@heroicons/react/24/outline";
 import PropTypes from "prop-types";
 import {useCart} from "../hooks/CartProvider.jsx";
 import {Link} from "react-router-dom";
+import {Button} from "flowbite-react";
+import {AiOutlineLoading} from "react-icons/ai";
 
-const Cart = ({ open, setOpen }) => {
-  const {cartItems, getTotalPrice, removeItemFromCart, getTotalItemsInCart} = useCart();
+const Cart = ({open, setOpen}) => {
+  const {cartItems, getTotalPrice, removeItemFromCart, getTotalItemsInCart, clearCart} = useCart();
+  const [isLoading, setIsLoading] = useState(false);
 
   // Remove item from cart
   const handleRemoveItem = (itemId) => {
     removeItemFromCart(itemId);
   };
 
+  // Handle checkout
+  const handleCheckout = () => {
+    console.log(cartItems)
+    clearCart();
+    setIsLoading(true);
+  };
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -26,7 +35,7 @@ const Cart = ({ open, setOpen }) => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"/>
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-hidden">
@@ -46,7 +55,7 @@ const Cart = ({ open, setOpen }) => {
                     <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
                       <div className="flex items-start justify-between">
                         <Dialog.Title className="text-lg font-medium text-gray-900 dark:text-gray-300">
-                          Shopping cart
+                          Shopping Cart
                         </Dialog.Title>
                         <div className="ml-3 flex h-7 items-center">
                           <button
@@ -54,9 +63,9 @@ const Cart = ({ open, setOpen }) => {
                             className="relative -m-2 p-2 text-gray-900 dark:text-gray-300 hover:text-gray-500"
                             onClick={() => setOpen(false)}
                           >
-                            <span className="absolute -inset-0.5" />
+                            <span className="absolute -inset-0.5"/>
                             <span className="sr-only">Close panel</span>
-                            <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                            <XMarkIcon className="h-6 w-6" aria-hidden="true"/>
                           </button>
                         </div>
                       </div>
@@ -69,7 +78,8 @@ const Cart = ({ open, setOpen }) => {
                           >
                             {cartItems.map((item) => (
                               <li key={item.id} className="flex py-6">
-                                <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                <div
+                                  className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                   <img
                                     src={item.imageSrc}
                                     alt={item.imageAlt}
@@ -133,11 +143,17 @@ const Cart = ({ open, setOpen }) => {
                         <p>${getTotalPrice()}</p>
                       </div>
                       <div className="mt-6">
-                        <button
-                          className="flex items-center justify-center rounded-md border border-transparent bg-primary-600 px-6 py-2.5 text-base font-medium text-white shadow-sm hover:bg-primary-800"
+                        <Button
+                          type="submit"
+                          disabled={isLoading}
+                          onClick={handleCheckout}
+                          className="w-full text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform !bg-primary-600 rounded-lg hover:!bg-primary-800 focus:!outline-none focus:!ring focus:!ring-gray-300 focus:!ring-opacity-50"
                         >
                           Checkout
-                        </button>
+                          {isLoading && (
+                            <AiOutlineLoading className="h-6 w-6 animate-spin ml-2"/>
+                          )}
+                        </Button>
                       </div>
                       <div
                         className="mt-6 flex justify-center text-center text-sm text-gray-900 dark:text-gray-300 transition duration-500">

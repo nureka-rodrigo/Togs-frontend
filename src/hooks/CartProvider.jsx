@@ -14,6 +14,8 @@ const CartContext = createContext({
   },
   getTotalPrice: () => {
   },
+  clearCart: () => {
+  },
 });
 
 // Custom hook to use the cart context
@@ -88,6 +90,10 @@ export const CartProvider = ({children}) => {
     }, 0);
   };
 
+  // Function to clear the cart
+  const clearCart = () => {
+    setCartItems([]);
+  };
 
   // Provide the cart context to child components
   return (
@@ -99,6 +105,7 @@ export const CartProvider = ({children}) => {
         updateCartItemQuantity,
         getTotalItemsInCart,
         getTotalPrice,
+        clearCart,
       }}
     >
       {children}

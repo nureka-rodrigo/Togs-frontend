@@ -97,7 +97,8 @@ const Header = () => {
                   className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                   aria-hidden="true"
                 />
-                <span className="text-sm font-medium text-gray-900 dark:text-gray-300 group-hover:text-gray-500">
+                <span
+                  className="text-sm font-medium text-gray-900 dark:text-gray-300 group-hover:text-gray-500 transition duration-500">
                   0
                 </span>
               </button>

@@ -69,7 +69,8 @@ const SignIn = () => {
       <div className="flex flex-col min-h-screen pattern">
         <Header />
         <section className="flex min-h-full flex-1 flex-col justify-center items-center mx-4">
-          <div className="w-full max-w-sm p-6 m-auto mx-auto rounded-xl shadow-md dark:shadow-gray-900 border dark:border-gray-700 transition duration-500">
+          <div
+            className="w-full max-w-sm md:max-w-md lg:max-w-lg p-6 m-auto mx-auto rounded-xl shadow-md dark:shadow-gray-900 border dark:border-gray-700 transition duration-500">
             <div className="flex flex-col items-center justify-center mx-auto">
               <h1 className="text-3xl font-bold text-gray-800 py-5 dark:text-white transition duration-500">
                 Welcome Back!

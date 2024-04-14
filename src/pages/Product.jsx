@@ -6,6 +6,7 @@ import Footer from "../components/Footer.jsx";
 import {useCart} from "../hooks/CartProvider.jsx";
 import {FaMinus, FaPlus} from "react-icons/fa";
 import SizeGuide from "../components/SizeGuide.jsx";
+import Ratings from "../components/Ratings.jsx";
 
 const product = {
   id: 1,
@@ -71,6 +72,7 @@ const Product = () => {
   const [sizeError, setSizeError] = useState(true);
   const [colorError, setColorError] = useState(true);
   const [sizeGuideOpen, setSizeGuideOpen] = useState(false);
+  const [ratingOpen, setRatingOpen] = useState(false);
 
   const {addItemToCart} = useCart();
 
@@ -189,12 +191,13 @@ const Product = () => {
                     ))}
                   </div>
                   <p className="sr-only">{reviews.average} out of 5 stars</p>
-                  <a
-                    href={reviews.href}
+                  <button
+                    onClick={() => setRatingOpen(true)}
                     className="ml-3 text-sm font-medium text-primary-600 hover:text-primary-500"
                   >
                     {reviews.totalCount} reviews
-                  </a>
+                  </button>
+                  <Ratings setOpen={setRatingOpen} open={ratingOpen}/>
                 </div>
               </div>
 
@@ -252,13 +255,12 @@ const Product = () => {
                     <h3 className="text-sm font-medium text-gray-600 dark:text-gray-400 transition duration-500">
                       Size
                     </h3>
-                    <a
-                      href="#"
+                    <button
                       onClick={() => setSizeGuideOpen(true)}
                       className="text-sm font-medium text-primary-600 hover:text-primary-500"
                     >
                       Size guide
-                    </a>
+                    </button>
                     <SizeGuide setOpen={setSizeGuideOpen} open={sizeGuideOpen}/>
                   </div>
 

@@ -1,9 +1,9 @@
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import { Button } from "flowbite-react";
-import { AiOutlineLoading } from "react-icons/ai";
+import {Link} from "react-router-dom";
+import {useState} from "react";
+import {Button} from "flowbite-react";
+import {AiOutlineLoading} from "react-icons/ai";
 
 const SignIn = () => {
   const [emailError, setEmailError] = useState(null);
@@ -81,7 +81,7 @@ const SignIn = () => {
               <div>
                 <label
                   htmlFor="Email"
-                  className="block text-sm text-gray-800 dark:text-gray-200 transition duration-500"
+                  className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-200 transition duration-500"
                 >
                   Email
                 </label>
@@ -101,7 +101,7 @@ const SignIn = () => {
                 <div className="flex items-center justify-between">
                   <label
                     htmlFor="password"
-                    className="block text-sm text-gray-800 dark:text-gray-200 transition duration-500"
+                    className="text-sm font-semibold leading-6 text-gray-800 dark:text-gray-200 transition duration-500"
                   >
                     Password
                   </label>

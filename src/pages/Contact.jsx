@@ -1,13 +1,13 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import { FaMapMarkedAlt, FaPhoneAlt } from "react-icons/fa";
-import { IoMailOpen } from "react-icons/io5";
-import { IoIosChatboxes } from "react-icons/io";
-import { Link } from "react-router-dom";
-import { MdArrowForward } from "react-icons/md";
-import { AiOutlineLoading } from "react-icons/ai";
-import { Button } from "flowbite-react";
-import { useState } from "react";
+import {FaMapMarkedAlt, FaPhoneAlt} from "react-icons/fa";
+import {IoMailOpen} from "react-icons/io5";
+import {IoIosChatboxes} from "react-icons/io";
+import {Link} from "react-router-dom";
+import {MdArrowForward} from "react-icons/md";
+import {AiOutlineLoading} from "react-icons/ai";
+import {Button} from "flowbite-react";
+import {useState} from "react";
 
 const Contact = () => {
   const [firstNameError, setFirstNameError] = useState(null);
@@ -163,7 +163,7 @@ const Contact = () => {
                             id="firstName"
                             name="firstName"
                             onChange={(e) => validateFirstName(e)}
-                            className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-primary-500 focus:ring-primary-500 disabled:opacity-50 disabled:pointer-events-none bg-gray-200 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 transition duration-500"
+                            className="py-2.5 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-primary-500 focus:ring-primary-500 disabled:opacity-50 disabled:pointer-events-none bg-gray-200 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 transition duration-500"
                             placeholder="First Name"
                           />
                           <span className="text-sm text-red-500">
@@ -180,7 +180,7 @@ const Contact = () => {
                             id="lastName"
                             name="lastName"
                             onChange={(e) => validateLastName(e)}
-                            className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-primary-500 focus:ring-primary-500 disabled:opacity-50 disabled:pointer-events-none bg-gray-200 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 transition duration-500"
+                            className="py-2.5 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-primary-500 focus:ring-primary-500 disabled:opacity-50 disabled:pointer-events-none bg-gray-200 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 transition duration-500"
                             placeholder="Last Name"
                           />
                           <span className="text-sm text-red-500">
@@ -199,7 +199,7 @@ const Contact = () => {
                           name="email"
                           autoComplete="email"
                           onChange={(e) => validateEmail(e)}
-                          className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-primary-500 focus:ring-primary-500 disabled:opacity-50 disabled:pointer-events-none bg-gray-200 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 transition duration-500"
+                          className="py-2.5 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-primary-500 focus:ring-primary-500 disabled:opacity-50 disabled:pointer-events-none bg-gray-200 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 transition duration-500"
                           placeholder="Email"
                         />
                         <span className="text-sm text-red-500">
@@ -216,7 +216,7 @@ const Contact = () => {
                           id="phone"
                           name="phone"
                           onChange={(e) => validatePhone(e)}
-                          className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-primary-500 focus:ring-primary-500 disabled:opacity-50 disabled:pointer-events-none bg-gray-200 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 transition duration-500"
+                          className="py-2.5 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-primary-500 focus:ring-primary-500 disabled:opacity-50 disabled:pointer-events-none bg-gray-200 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 transition duration-500"
                           placeholder="Phone Number"
                         />
                         <span className="text-sm text-red-500">
@@ -233,7 +233,7 @@ const Contact = () => {
                           name="details"
                           rows="4"
                           onChange={(e) => validateDetails(e)}
-                          className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-primary-500 focus:ring-primary-500 disabled:opacity-50 disabled:pointer-events-none bg-gray-200 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 transition duration-500"
+                          className="py-2.5 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-primary-500 focus:ring-primary-500 disabled:opacity-50 disabled:pointer-events-none bg-gray-200 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 transition duration-500"
                           placeholder="Details"
                         ></textarea>
                         <span className="text-sm text-red-500">

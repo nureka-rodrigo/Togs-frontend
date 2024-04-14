@@ -16,7 +16,7 @@ const SignIn = () => {
     const data = e.target.value;
 
     if (data === "") {
-      setEmailError("Email can not be empty!");
+      setEmailError("Email is required!");
     } else if (!/\S+@\S+\.\S+/.test(data)) {
       setEmailError("Email address is invalid!");
     } else {
@@ -29,7 +29,7 @@ const SignIn = () => {
     const data = e.target.value;
 
     if (data === "") {
-      setPasswordError("Password can not be empty!");
+      setPasswordError("Password is required!");
     } else {
       setPasswordError(null);
     }
@@ -48,12 +48,12 @@ const SignIn = () => {
 
     // Check if email and password are empty
     if (data.email === "" && data.password === "") {
-      setEmailError("Email can not be empty!");
-      setPasswordError("Password can not be empty!");
+      setEmailError("Email is required!");
+      setPasswordError("Password is required!");
     } else if (data.email === "") {
-      setEmailError("Email can not be empty!");
+      setEmailError("Email is required!");
     } else if (data.password === "") {
-      setPasswordError("Password can not be empty!");
+      setPasswordError("Password is required!");
     } else {
       setEmailError(null);
       setPasswordError(null);

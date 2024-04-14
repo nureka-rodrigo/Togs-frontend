@@ -22,7 +22,7 @@ const Contact = () => {
     const data = e.target.value;
 
     if (data === "") {
-      setFirstNameError("First Name can not be empty!");
+      setFirstNameError("First Name is required!");
     } else {
       setFirstNameError(null);
     }
@@ -33,7 +33,7 @@ const Contact = () => {
     const data = e.target.value;
 
     if (data === "") {
-      setLastNameError("Last Name can not be empty!");
+      setLastNameError("Last Name is required!");
     } else {
       setLastNameError(null);
     }
@@ -44,7 +44,7 @@ const Contact = () => {
     const data = e.target.value;
 
     if (data === "") {
-      setEmailError("Email can not be empty!");
+      setEmailError("Email is required!");
     } else if (!/\S+@\S+\.\S+/.test(data)) {
       setEmailError("Email address is invalid!");
     } else {
@@ -57,7 +57,7 @@ const Contact = () => {
     const data = e.target.value;
 
     if (data === "") {
-      setPhoneError("Phone Number can not be empty!");
+      setPhoneError("Phone Number is required!");
     } else if (!/^\d{10}$/.test(data)) {
       setPhoneError("Phone number is invalid!");
     } else {
@@ -70,7 +70,7 @@ const Contact = () => {
     const data = e.target.value;
 
     if (data === "") {
-      setDetailsError("Details can not be empty!");
+      setDetailsError("Details is required!");
     } else {
       setDetailsError(null);
     }
@@ -101,21 +101,21 @@ const Contact = () => {
       data.phone === "" &&
       data.details === ""
     ) {
-      setFirstNameError("First Name can not be empty!");
-      setLastNameError("Last Name can not be empty!");
-      setEmailError("Email can not be empty!");
-      setPhoneError("Phone Number can not be empty!");
-      setDetailsError("Details can not be empty!");
+      setFirstNameError("First Name is required!");
+      setLastNameError("Last Name is required!");
+      setEmailError("Email is required!");
+      setPhoneError("Phone Number is required!");
+      setDetailsError("Details is required!");
     } else if (data.firstName === "") {
-      setFirstNameError("First Name can not be empty!");
+      setFirstNameError("First Name is required!");
     } else if (data.lastName === "") {
-      setLastNameError("Last Name can not be empty!");
+      setLastNameError("Last Name is required!");
     } else if (data.email === "") {
-      setEmailError("Email can not be empty!");
+      setEmailError("Email is required!");
     } else if (data.phone === "") {
-      setPhoneError("Phone Number can not be empty!");
+      setPhoneError("Phone Number is required!");
     } else if (data.details === "") {
-      setDetailsError("Details can not be empty!");
+      setDetailsError("Details is required!");
     } else {
       setFirstNameError(null);
       setLastNameError(null);

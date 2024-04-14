@@ -8,6 +8,7 @@ import Collections from "./pages/Collections.jsx";
 import Products from "./pages/Products.jsx";
 import Product from "./pages/Product.jsx";
 import SignIn from "./pages/SignIn.jsx";
+import SignUp from "./pages/SignUp.jsx";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path={"/"} element={<Home />} />
           <Route path={"/login"} element={<SignIn />} />
+          <Route path={"/register"} element={<SignUp />} />
           <Route path={"/collections"} element={<Collections />} />
           <Route path={"/products"} element={<Products />} />
           <Route path={"/product"} element={<Product />} />

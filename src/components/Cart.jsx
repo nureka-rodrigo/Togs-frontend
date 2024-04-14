@@ -144,7 +144,7 @@ const Cart = ({ open, setOpen }) => {
                       <div className="mt-6">
                         <a
                           href="#"
-                          className="flex items-center justify-center rounded-md border border-transparent bg-primary-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-primary-800"
+                          className="flex items-center justify-center rounded-md border border-transparent bg-primary-600 px-6 py-2.5 text-base font-medium text-white shadow-sm hover:bg-primary-800"
                         >
                           Checkout
                         </a>

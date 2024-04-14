@@ -1,9 +1,9 @@
-import { useState } from "react";
+import {useState} from "react";
 import Header from "../components/Header.jsx";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import Footer from "../components/Footer.jsx";
-import { AiOutlineLoading } from "react-icons/ai";
-import { Button } from "flowbite-react";
+import {AiOutlineLoading} from "react-icons/ai";
+import {Button} from "flowbite-react";
 
 const SignUp = () => {
   const [firstNameError, setFirstNameError] = useState(null);
@@ -264,7 +264,7 @@ const SignUp = () => {
                       disabled={isLoading}
                       onChange={(e) => validatePhone(e)}
                       className="py-2.5 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-primary-500 focus:ring-primary-500 disabled:opacity-50 disabled:pointer-events-none bg-gray-200 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 transition duration-500"
-                      placeholder="Phone Number"
+                      placeholder="0712345678"
                     />
                     <span className="text-sm text-red-500">{phoneError}</span>
                   </div>

@@ -1,8 +1,8 @@
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
-import { GiClothes, GiLoincloth } from "react-icons/gi";
-import { FaTruck } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import {GiClothes, GiLoincloth} from "react-icons/gi";
+import {FaTruck} from "react-icons/fa";
+import {Link} from "react-router-dom";
 
 const Home = () => {
   return (
@@ -92,7 +92,7 @@ const Home = () => {
 
                   <Link
                     to="/collections"
-                    className="inline-block rounded-md border border-transparent bg-primary-600 px-8 py-3 text-center font-medium text-white hover:bg-primary-800 transition duration-500"
+                    className="inline-block rounded-md border border-transparent bg-primary-600 px-8 py-2.5 text-center font-medium text-white hover:bg-primary-800 transition duration-500"
                   >
                     Shop Collection
                   </Link>

@@ -6,6 +6,7 @@ import {IoMdClose} from "react-icons/io";
 import {IoMenu} from "react-icons/io5";
 import ThemeButton from "./ThemeButton.jsx";
 import Cart from "./Cart.jsx";
+import {useCart} from "../hooks/CartProvider.jsx";
 
 const NavItems = [
   {
@@ -28,6 +29,7 @@ const NavItems = [
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
+  const {getTotalItemsInCart} = useCart();
 
   const lastPart = useLocation().pathname;
 
@@ -94,12 +96,12 @@ const Header = () => {
                 className="group -m-2 flex items-center p-2"
               >
                 <ShoppingBagIcon
-                  className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                  className="h-6 w-6 flex-shrink-0 text-gray-500 group-hover:text-gray-500"
                   aria-hidden="true"
                 />
                 <span
-                  className="text-sm font-medium text-gray-900 dark:text-gray-300 group-hover:text-gray-500 transition duration-500">
-                  0
+                  className="text-sm font-medium text-gray-500 group-hover:text-gray-500 transition duration-500">
+                  {getTotalItemsInCart()}
                 </span>
               </button>
               <Cart open={cartOpen} setOpen={setCartOpen} />

@@ -28,7 +28,9 @@ export const CartProvider = ({children}) => {
   // Function to add item to cart
   const addItemToCart = (item) => {
     // Check if the item already exists in the cart
-    const existingItemIndex = cartItems.findIndex((cartItem) => cartItem.id === item.id);
+    const existingItemIndex = cartItems.findIndex(
+      (cartItem) => cartItem.id === item.id,
+    );
 
     // If the item is already in the cart, update its properties
     if (existingItemIndex !== -1) {
@@ -45,7 +47,6 @@ export const CartProvider = ({children}) => {
     setCartItems([...cartItems, item]);
   };
 
-
   // Function to remove item from cart
   const removeItemFromCart = (itemId) => {
     setCartItems(cartItems.filter((item) => item.id !== itemId));
@@ -55,8 +56,8 @@ export const CartProvider = ({children}) => {
   const updateCartItemQuantity = (itemId, quantity) => {
     setCartItems(
       cartItems.map((item) =>
-        item.id === itemId ? {...item, quantity} : item
-      )
+        item.id === itemId ? {...item, quantity} : item,
+      ),
     );
   };
 
@@ -67,7 +68,6 @@ export const CartProvider = ({children}) => {
     // Return the number of unique item IDs
     return uniqueItemIds.size;
   };
-
 
   // Function to get total price of items in cart
   const getTotalPrice = () => {
@@ -86,7 +86,7 @@ export const CartProvider = ({children}) => {
         return total;
       }
       // Add the price of the item multiplied by its quantity to the total
-      return total + (itemPrice * item.quantity);
+      return total + itemPrice * item.quantity;
     }, 0);
   };
 

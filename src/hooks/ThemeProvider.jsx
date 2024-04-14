@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import {createContext, useContext, useEffect, useState} from "react";
 import PropTypes from "prop-types";
 
 const ThemeContext = createContext(undefined);
@@ -9,7 +9,7 @@ export const useTheme = () => {
 
 export const ThemeProvider = ({ children }) => {
   const [currentTheme, setCurrentTheme] = useState(
-    localStorage.theme === "dark" ? "dark" : "light"
+    localStorage.theme === "dark" ? "dark" : "light",
   );
 
   useEffect(() => {

@@ -254,7 +254,7 @@ const Products = () => {
                                     ? "font-medium text-gray-600 dark:text-gray-400"
                                     : "text-gray-500",
                                   active ? "bg-gray-100 dark:bg-gray-900" : "",
-                                  "block px-4 py-2 text-sm"
+                                  "block px-4 py-2 text-sm",
                                 )}
                               >
                                 {option.name}

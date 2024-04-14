@@ -98,7 +98,9 @@ const Product = () => {
 
   const handleAddToCart = () => {
     if (!selectedColor || !selectedSize) {
-      console.log("Please select color, size, and quantity before adding to cart.");
+      console.log(
+        "Please select color, size, and quantity before adding to cart.",
+      );
       return;
     }
 
@@ -184,7 +186,7 @@ const Product = () => {
                           reviews.average > rating
                             ? "text-gray-600 dark:text-gray-400 transition duration-500"
                             : "text-gray-200",
-                          "h-5 w-5 flex-shrink-0"
+                          "h-5 w-5 flex-shrink-0",
                         )}
                         aria-hidden="true"
                       />
@@ -226,7 +228,7 @@ const Product = () => {
                               color.selectedClass,
                               active && checked ? "ring ring-offset-1" : "",
                               !active && checked ? "ring-2" : "",
-                              "relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none"
+                              "relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none",
                             )
                           }
                         >
@@ -237,7 +239,7 @@ const Product = () => {
                             aria-hidden="true"
                             className={classNames(
                               color.class,
-                              "h-8 w-8 rounded-full border border-black border-opacity-10"
+                              "h-8 w-8 rounded-full border border-black border-opacity-10",
                             )}
                           />
                         </RadioGroup.Option>
@@ -245,7 +247,9 @@ const Product = () => {
                     </div>
                   </RadioGroup>
                   {colorError && (
-                    <span className="text-sm text-red-500">Please select a color.</span>
+                    <span className="text-sm text-red-500">
+                      Please select a color.
+                    </span>
                   )}
                 </div>
 
@@ -261,7 +265,10 @@ const Product = () => {
                     >
                       Size guide
                     </button>
-                    <SizeGuide setOpen={setSizeGuideOpen} open={sizeGuideOpen}/>
+                    <SizeGuide
+                      setOpen={setSizeGuideOpen}
+                      open={sizeGuideOpen}
+                    />
                   </div>
 
                   <RadioGroup
@@ -284,7 +291,7 @@ const Product = () => {
                                 ? "cursor-pointer bg-white text-text-gray-600 dark:text-gray-400-900 shadow-sm transition duration-500"
                                 : "cursor-not-allowed bg-gray-50 text-gray-600 dark:text-gray-400 transition duration-500",
                               active ? "ring-2 ring-primary-500" : "",
-                              "group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6"
+                              "group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6",
                             )
                           }
                         >
@@ -297,8 +304,10 @@ const Product = () => {
                                 <span
                                   className={classNames(
                                     active ? "border" : "border-2",
-                                    checked ? "border-primary-500" : "border-transparent",
-                                    "pointer-events-none absolute -inset-px rounded-md"
+                                    checked
+                                      ? "border-primary-500"
+                                      : "border-transparent",
+                                    "pointer-events-none absolute -inset-px rounded-md",
                                   )}
                                   aria-hidden="true"
                                 />
@@ -307,21 +316,21 @@ const Product = () => {
                                   aria-hidden="true"
                                   className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
                                 >
-                            <svg
-                              className="absolute inset-0 h-full w-full stroke-2 text-gray-600 dark:text-gray-400 transition duration-500"
-                              viewBox="0 0 100 100"
-                              preserveAspectRatio="none"
-                              stroke="currentColor"
-                            >
-                              <line
-                                x1={0}
-                                y1={100}
-                                x2={100}
-                                y2={0}
-                                vectorEffect="non-scaling-stroke"
-                              />
-                            </svg>
-                          </span>
+                                  <svg
+                                    className="absolute inset-0 h-full w-full stroke-2 text-gray-600 dark:text-gray-400 transition duration-500"
+                                    viewBox="0 0 100 100"
+                                    preserveAspectRatio="none"
+                                    stroke="currentColor"
+                                  >
+                                    <line
+                                      x1={0}
+                                      y1={100}
+                                      x2={100}
+                                      y2={0}
+                                      vectorEffect="non-scaling-stroke"
+                                    />
+                                  </svg>
+                                </span>
                               )}
                             </>
                           )}
@@ -330,7 +339,9 @@ const Product = () => {
                     </div>
                   </RadioGroup>
                   {sizeError && (
-                    <span className="text-sm text-red-500">Please select a size.</span>
+                    <span className="text-sm text-red-500">
+                      Please select a size.
+                    </span>
                   )}
                 </div>
 

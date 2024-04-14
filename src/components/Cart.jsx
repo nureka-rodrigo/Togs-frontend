@@ -8,7 +8,13 @@ import {Button} from "flowbite-react";
 import {AiOutlineLoading} from "react-icons/ai";
 
 const Cart = ({open, setOpen}) => {
-  const {cartItems, getTotalPrice, removeItemFromCart, getTotalItemsInCart, clearCart} = useCart();
+  const {
+    cartItems,
+    getTotalPrice,
+    removeItemFromCart,
+    getTotalItemsInCart,
+    clearCart,
+  } = useCart();
   const [isLoading, setIsLoading] = useState(false);
 
   // Remove item from cart
@@ -18,7 +24,7 @@ const Cart = ({open, setOpen}) => {
 
   // Handle checkout
   const handleCheckout = () => {
-    console.log(cartItems)
+    console.log(cartItems);
     clearCart();
     setIsLoading(true);
   };
@@ -92,9 +98,7 @@ const Cart = ({open, setOpen}) => {
                                     <div
                                       className="flex justify-between text-base font-medium text-gray-900 dark:text-gray-300 transition duration-500">
                                       <h3>
-                                        <Link to={item.href}>
-                                          {item.name}
-                                        </Link>
+                                        <Link to={item.href}>{item.name}</Link>
                                       </h3>
                                       <p className="ml-4">${item.price}</p>
                                     </div>
@@ -115,7 +119,9 @@ const Cart = ({open, setOpen}) => {
                                     <div className="flex">
                                       <button
                                         type="button"
-                                        onClick={() => handleRemoveItem(item.id)}
+                                        onClick={() =>
+                                          handleRemoveItem(item.id)
+                                        }
                                         className="font-medium text-primary-600 hover:text-primary-500"
                                       >
                                         Remove

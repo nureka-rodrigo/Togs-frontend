@@ -5,6 +5,7 @@ import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import {useCart} from "../hooks/CartProvider.jsx";
 import {FaMinus, FaPlus} from "react-icons/fa";
+import SizeGuide from "../components/SizeGuide.jsx";
 
 const product = {
   id: 1,
@@ -69,6 +70,7 @@ const Product = () => {
   const [quantity, setQuantity] = useState(1);
   const [sizeError, setSizeError] = useState(true);
   const [colorError, setColorError] = useState(true);
+  const [sizeGuideOpen, setSizeGuideOpen] = useState(false);
 
   const {addItemToCart} = useCart();
 
@@ -252,10 +254,12 @@ const Product = () => {
                     </h3>
                     <a
                       href="#"
+                      onClick={() => setSizeGuideOpen(true)}
                       className="text-sm font-medium text-primary-600 hover:text-primary-500"
                     >
                       Size guide
                     </a>
+                    <SizeGuide setOpen={setSizeGuideOpen} open={sizeGuideOpen}/>
                   </div>
 
                   <RadioGroup
@@ -345,7 +349,7 @@ const Product = () => {
                     type="text"
                     value={quantity}
                     readOnly
-                    className="py-1.5 px-4 block w-full border-gray-200 text-center text-sm focus:border-primary-500 focus:ring-primary-500 disabled:opacity-50 disabled:pointer-events-none bg-gray-200 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 transition duration-500"
+                    className="py-1.5 px-4 block w-full border-gray-200 text-center text-sm focus:border-primary-500 focus:ring-primary-500 disabled:opacity-50 disabled:pointer-events-none bg-gray-100 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 transition duration-500"
                     placeholder="1"
                     required
                   />
@@ -362,7 +366,7 @@ const Product = () => {
                 <button
                   type="submit"
                   onClick={handleAddToCart}
-                  className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-primary-600 px-8 py-3 text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                  className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-primary-600 px-8 py-2.5 text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
                 >
                   Add to bag
                 </button>

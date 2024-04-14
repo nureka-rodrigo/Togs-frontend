@@ -1,17 +1,17 @@
-import { useState } from "react";
-import { StarIcon } from "@heroicons/react/20/solid";
-import { RadioGroup } from "@headlessui/react";
+import {useState} from "react";
+import {StarIcon} from "@heroicons/react/20/solid";
+import {RadioGroup} from "@headlessui/react";
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
+import {useCart} from "../hooks/CartProvider.jsx";
+import {FaMinus, FaPlus} from "react-icons/fa";
 
 const product = {
+  id: 1,
   name: "Basic Tee 6-Pack",
-  price: "$192",
-  href: "#",
-  breadcrumbs: [
-    { id: 1, name: "Men", href: "#" },
-    { id: 2, name: "Clothing", href: "#" },
-  ],
+  price: "192",
+  quantity: 1,
+  href: "http://localhost:3000/product",
   images: [
     {
       src: "https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg",
@@ -31,19 +31,19 @@ const product = {
     },
   ],
   colors: [
-    { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
-    { name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400" },
-    { name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900" },
+    {name: "White", class: "bg-white", selectedClass: "ring-gray-400"},
+    {name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400"},
+    {name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900"},
   ],
   sizes: [
-    { name: "XXS", inStock: false },
-    { name: "XS", inStock: true },
-    { name: "S", inStock: true },
-    { name: "M", inStock: true },
-    { name: "L", inStock: true },
-    { name: "XL", inStock: true },
-    { name: "2XL", inStock: true },
-    { name: "3XL", inStock: true },
+    {name: "XXS", inStock: false},
+    {name: "XS", inStock: true},
+    {name: "S", inStock: true},
+    {name: "M", inStock: true},
+    {name: "L", inStock: true},
+    {name: "XL", inStock: true},
+    {name: "2XL", inStock: true},
+    {name: "3XL", inStock: true},
   ],
   description:
     'The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: "Black". Need to add an extra pop of color to your outfit? Our white tee has you covered.',
@@ -56,60 +56,67 @@ const product = {
   details:
     'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal Gray" limited release.',
 };
-const reviews = { href: "#", average: 4, totalCount: 117 };
+
+const reviews = {href: "#", average: 4, totalCount: 117};
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const Product = () => {
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
+  const [selectedColor, setSelectedColor] = useState(null);
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [quantity, setQuantity] = useState(1);
+  const [sizeError, setSizeError] = useState(true);
+  const [colorError, setColorError] = useState(true);
+
+  const {addItemToCart} = useCart();
+
+  const handleColorChange = (color) => {
+    setSelectedColor(color);
+    setColorError(false);
+  };
+
+  const handleSizeChange = (size) => {
+    setSelectedSize(size);
+    setSizeError(false);
+  };
+
+  const handleIncrement = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
+
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity((prevQuantity) => prevQuantity - 1);
+    }
+  };
+
+  const handleAddToCart = () => {
+    if (!selectedColor || !selectedSize) {
+      console.log("Please select color, size, and quantity before adding to cart.");
+      return;
+    }
+
+    const itemToAdd = {
+      id: product.id,
+      name: product.name,
+      href: product.href,
+      size: selectedSize.name,
+      color: selectedColor.name,
+      price: product.price,
+      quantity: quantity,
+      imageSrc: product.images[0].src,
+      imageAlt: product.images[0].alt,
+    };
+    addItemToCart(itemToAdd);
+  };
 
   return (
     <div className="flex flex-col min-h-screen pattern">
-      <Header />
+      <Header/>
       <section className="flex-grow">
         <div className="pt-6">
-          <nav aria-label="Breadcrumb">
-            <ol
-              role="list"
-              className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8"
-            >
-              {product.breadcrumbs.map((breadcrumb) => (
-                <li key={breadcrumb.id}>
-                  <div className="flex items-center">
-                    <a
-                      href={breadcrumb.href}
-                      className="mr-2 text-sm font-medium text-gray-600 dark:text-gray-400 transition duration-500"
-                    >
-                      {breadcrumb.name}
-                    </a>
-                    <svg
-                      width={16}
-                      height={20}
-                      viewBox="0 0 16 20"
-                      fill="currentColor"
-                      aria-hidden="true"
-                      className="h-5 w-4 text-gray-600 dark:text-gray-400 transition duration-500"
-                    >
-                      <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
-                    </svg>
-                  </div>
-                </li>
-              ))}
-              <li className="text-sm">
-                <a
-                  href={product.href}
-                  aria-current="page"
-                  className="font-medium text-gray-600 dark:text-gray-400 hover:text-gray-600 transition duration-500"
-                >
-                  {product.name}
-                </a>
-              </li>
-            </ol>
-          </nav>
-
           {/* Image gallery */}
           <div className="mx-auto mt-6 max-w-2xl px-4 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
             <div className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
@@ -145,9 +152,11 @@ const Product = () => {
           </div>
 
           {/* Product info */}
-          <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
+          <div
+            className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
             <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-              <h1 className="text-2xl font-bold tracking-tight text-gray-600 dark:text-gray-400 sm:text-3xl transition duration-500">
+              <h1
+                className="text-2xl font-bold tracking-tight text-gray-600 dark:text-gray-400 sm:text-3xl transition duration-500">
                 {product.name}
               </h1>
             </div>
@@ -156,7 +165,7 @@ const Product = () => {
             <div className="mt-4 lg:row-span-3 lg:mt-0">
               <h2 className="sr-only">Product information</h2>
               <p className="text-3xl tracking-tight text-gray-600 dark:text-gray-400 transition duration-500">
-                {product.price}
+                ${product.price}
               </p>
 
               {/* Reviews */}
@@ -187,7 +196,7 @@ const Product = () => {
                 </div>
               </div>
 
-              <form className="mt-10">
+              <div className="mt-10">
                 {/* Colors */}
                 <div>
                   <h3 className="text-sm font-medium text-gray-600 dark:text-gray-400 transition duration-500">
@@ -196,8 +205,8 @@ const Product = () => {
 
                   <RadioGroup
                     value={selectedColor}
-                    onChange={setSelectedColor}
-                    className="mt-4"
+                    onChange={handleColorChange}
+                    className="my-4"
                   >
                     <RadioGroup.Label className="sr-only">
                       Choose a color
@@ -207,7 +216,7 @@ const Product = () => {
                         <RadioGroup.Option
                           key={color.name}
                           value={color}
-                          className={({ active, checked }) =>
+                          className={({active, checked}) =>
                             classNames(
                               color.selectedClass,
                               active && checked ? "ring ring-offset-1" : "",
@@ -230,6 +239,9 @@ const Product = () => {
                       ))}
                     </div>
                   </RadioGroup>
+                  {colorError && (
+                    <span className="text-sm text-red-500">Please select a color.</span>
+                  )}
                 </div>
 
                 {/* Sizes */}
@@ -248,8 +260,8 @@ const Product = () => {
 
                   <RadioGroup
                     value={selectedSize}
-                    onChange={setSelectedSize}
-                    className="mt-4"
+                    onChange={handleSizeChange}
+                    className="my-4"
                   >
                     <RadioGroup.Label className="sr-only">
                       Choose a size
@@ -260,7 +272,7 @@ const Product = () => {
                           key={size.name}
                           value={size}
                           disabled={!size.inStock}
-                          className={({ active }) =>
+                          className={({active}) =>
                             classNames(
                               size.inStock
                                 ? "cursor-pointer bg-white text-text-gray-600 dark:text-gray-400-900 shadow-sm transition duration-500"
@@ -270,7 +282,7 @@ const Product = () => {
                             )
                           }
                         >
-                          {({ active, checked }) => (
+                          {({active, checked}) => (
                             <>
                               <RadioGroup.Label as="span">
                                 {size.name}
@@ -279,9 +291,7 @@ const Product = () => {
                                 <span
                                   className={classNames(
                                     active ? "border" : "border-2",
-                                    checked
-                                      ? "border-primary-500"
-                                      : "border-transparent",
+                                    checked ? "border-primary-500" : "border-transparent",
                                     "pointer-events-none absolute -inset-px rounded-md"
                                   )}
                                   aria-hidden="true"
@@ -291,21 +301,21 @@ const Product = () => {
                                   aria-hidden="true"
                                   className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
                                 >
-                                  <svg
-                                    className="absolute inset-0 h-full w-full stroke-2 text-gray-600 dark:text-gray-400 transition duration-500"
-                                    viewBox="0 0 100 100"
-                                    preserveAspectRatio="none"
-                                    stroke="currentColor"
-                                  >
-                                    <line
-                                      x1={0}
-                                      y1={100}
-                                      x2={100}
-                                      y2={0}
-                                      vectorEffect="non-scaling-stroke"
-                                    />
-                                  </svg>
-                                </span>
+                            <svg
+                              className="absolute inset-0 h-full w-full stroke-2 text-gray-600 dark:text-gray-400 transition duration-500"
+                              viewBox="0 0 100 100"
+                              preserveAspectRatio="none"
+                              stroke="currentColor"
+                            >
+                              <line
+                                x1={0}
+                                y1={100}
+                                x2={100}
+                                y2={0}
+                                vectorEffect="non-scaling-stroke"
+                              />
+                            </svg>
+                          </span>
                               )}
                             </>
                           )}
@@ -313,22 +323,50 @@ const Product = () => {
                       ))}
                     </div>
                   </RadioGroup>
+                  {sizeError && (
+                    <span className="text-sm text-red-500">Please select a size.</span>
+                  )}
                 </div>
 
-                <div className="pt-10">
+                <h3 className="text-sm font-medium text-gray-600 dark:text-gray-400 transition duration-500 my-4">
+                  Quantity
+                </h3>
+                <div className="relative flex items-center max-w-[8rem] my-4">
+                  {/* Decrement button */}
+                  <button
+                    type="button"
+                    onClick={handleDecrement}
+                    className="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-2.5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
+                  >
+                    <FaMinus className="w-3 h-3 text-gray-900 dark:text-white"/>
+                  </button>
+                  {/* Quantity input */}
                   <input
                     type="text"
-                    placeholder="Quantity"
-                    className="block w-full py-2 text-gray-700 placeholder-gray-400/70 bg-white border border-gray-200 rounded-lg px-5 rtl:pr-11 rtl:pl-5 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                    value={quantity}
+                    readOnly
+                    className="py-1.5 px-4 block w-full border-gray-200 text-center text-sm focus:border-primary-500 focus:ring-primary-500 disabled:opacity-50 disabled:pointer-events-none bg-gray-200 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 transition duration-500"
+                    placeholder="1"
+                    required
                   />
+                  {/* Increment button */}
+                  <button
+                    type="button"
+                    onClick={handleIncrement}
+                    className="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-2.5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
+                  >
+                    <FaPlus className="w-3 h-3 text-gray-900 dark:text-white"/>
+                  </button>
                 </div>
+
                 <button
                   type="submit"
+                  onClick={handleAddToCart}
                   className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-primary-600 px-8 py-3 text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
                 >
                   Add to bag
                 </button>
-              </form>
+              </div>
             </div>
 
             <div className="pt-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-10 lg:pr-8 lg:pt-6">
@@ -376,7 +414,7 @@ const Product = () => {
           </div>
         </div>
       </section>
-      <Footer />
+      <Footer/>
     </div>
   );
 };

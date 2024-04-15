@@ -33,9 +33,9 @@ const product = {
     },
   ],
   colors: [
-    {name: "White", class: "bg-white", selectedClass: "ring-gray-400"},
-    {name: "Gray", class: "bg-gray-200", selectedClass: "ring-gray-400"},
-    {name: "Black", class: "bg-gray-900", selectedClass: "ring-gray-900"},
+    {name: "White", class: "bg-white"},
+    {name: "Gray", class: "bg-gray-200"},
+    {name: "Black", class: "bg-gray-900"},
   ],
   sizes: [
     {name: "XXS", inStock: false},
@@ -225,10 +225,10 @@ const Product = () => {
                           value={color}
                           className={({active, checked}) =>
                             classNames(
-                              color.selectedClass,
+                              "ring-primary-600",
                               active && checked ? "ring ring-offset-1" : "",
                               !active && checked ? "ring-2" : "",
-                              "relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none",
+                              "relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none focus:ring-2 transition duration-500",
                             )
                           }
                         >

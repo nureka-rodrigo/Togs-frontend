@@ -64,6 +64,7 @@ const reviewsData = [
 const Ratings = ({open, setOpen}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [displayCount, setDisplayCount] = useState(2);
+  const [displayReviews, setDisplayReviews] = useState(true);
 
   const loadMoreReviews = () => {
     setIsLoading(true);
@@ -171,58 +172,88 @@ const Ratings = ({open, setOpen}) => {
                     </p>
                   </div>
                 </div>
-                <div className="pt-11 pb-8 border-b border-gray-100 max-xl:max-w-2xl max-xl:mx-auto">
-                  {reviewsData.slice(0, displayCount).map((review, index) => (
-                    <div
-                      key={index}
-                      className="pt-8 max-xl:max-w-2xl max-xl:mx-auto"
+                <div className="mt-6 md:flex md:items-center md:justify-center">
+                  <div
+                    className="inline-flex overflow-hidden bg-white border divide-x rounded-lg dark:bg-gray-900 rtl:flex-row-reverse dark:border-gray-700 dark:divide-gray-700">
+                    <button
+                      onClick={() => setDisplayReviews(true)}
+                      className={`px-5 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 ${displayReviews ? "bg-gray-200 dark:bg-gray-800 dark:text-gray-300" : ""}`}
                     >
-                      <div className="flex items-center gap-3 mb-4">
-                        <StarIcon className="h-8 w-8 text-gray-600 dark:text-gray-400 transition duration-500"/>
-                        <StarIcon className="h-8 w-8 text-gray-600 dark:text-gray-400 transition duration-500"/>
-                        <StarIcon className="h-8 w-8 text-gray-600 dark:text-gray-400 transition duration-500"/>
-                        <StarIcon className="h-8 w-8 text-gray-600 dark:text-gray-400 transition duration-500"/>
-                        <StarIcon className="h-8 w-8 text-gray-600 dark:text-gray-400 transition duration-500"/>
-                      </div>
-                      <h3 className="font-semibold text-xl leading-9 ttext-gray-600 dark:text-gray-400 mb-6">
-                        {review.title}
-                      </h3>
-                      <div className="flex sm:items-center flex-col min-[400px]:flex-row justify-between gap-5 mb-4">
-                        <div className="flex items-center gap-3">
-                          <img
-                            src={review.imgSrc}
-                            alt="Robert image"
-                            className="w-8 h-8"
-                          />
-                          <h6 className="font-semibold text-md leading-8 text-primary-600">
-                            {review.name}
-                          </h6>
+                      View reviews
+                    </button>
+                    <button
+                      onClick={() => setDisplayReviews(false)}
+                      className={`px-5 py-2 text-xs font-medium text-gray-600 transition-colors duration-200 ${!displayReviews ? "bg-gray-200 dark:bg-gray-800 dark:text-gray-300" : ""}`}
+                    >
+                      Add a review
+                    </button>
+                  </div>
+                </div>
+                <div className="pt-11 pb-8 border-b border-gray-100 max-xl:max-w-2xl max-xl:mx-auto">
+                  {displayReviews ? (
+                    <div className="reviews-container">
+                      {reviewsData.slice(0, displayCount).map((review, index) => (
+                        <div
+                          key={index}
+                          className="pt-8 max-xl:max-w-2xl max-xl:mx-auto"
+                        >
+                          <div className="flex items-center gap-3 mb-4">
+                            <StarIcon className="h-8 w-8 text-gray-600 dark:text-gray-400 transition duration-500"/>
+                            <StarIcon className="h-8 w-8 text-gray-600 dark:text-gray-400 transition duration-500"/>
+                            <StarIcon className="h-8 w-8 text-gray-600 dark:text-gray-400 transition duration-500"/>
+                            <StarIcon className="h-8 w-8 text-gray-600 dark:text-gray-400 transition duration-500"/>
+                            <StarIcon className="h-8 w-8 text-gray-600 dark:text-gray-400 transition duration-500"/>
+                          </div>
+                          <h3 className="font-semibold text-xl leading-9 ttext-gray-600 dark:text-gray-400 mb-6">
+                            {review.title}
+                          </h3>
+                          <div
+                            className="flex sm:items-center flex-col min-[400px]:flex-row justify-between gap-5 mb-4">
+                            <div className="flex items-center gap-3">
+                              <img
+                                src={review.imgSrc}
+                                alt="Robert image"
+                                className="w-8 h-8"
+                              />
+                              <h6 className="font-semibold text-md leading-8 text-primary-600">
+                                {review.name}
+                              </h6>
+                            </div>
+                            <p className="font-normal text-md leading-8 text-gray-600 dark:text-gray-400">
+                              {review.date}
+                            </p>
+                          </div>
+                          <p
+                            className="font-normal text-md leading-8 text-gray-600 dark:text-gray-400 max-xl:text-justify">
+                            {review.content}
+                          </p>
                         </div>
-                        <p className="font-normal text-md leading-8 text-gray-600 dark:text-gray-400">
-                          {review.date}
-                        </p>
-                      </div>
-                      <p className="font-normal text-md leading-8 text-gray-600 dark:text-gray-400 max-xl:text-justify">
-                        {review.content}
-                      </p>
+                      ))}
                     </div>
-                  ))}
+                  ) : (
+                    <div className="form-container">
+                      {/*  Form */}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
           </section>
         </Modal.Body>
         <Modal.Footer className="flex items-center justify-center bg-gray-100 dark:bg-gray-950 rounded-b-lg">
-          <Button
-            disabled={isLoading}
-            onClick={loadMoreReviews}
-            className="w-full text-sm font-medium text-gray-600 dark:text-gray-400 capitalize !bg-transparent focus:!ring-0"
-          >
-            Load More
-            {isLoading && (
-              <AiOutlineLoading className="h-6 w-6 animate-spin ml-2"/>
-            )}
-          </Button>
+          {displayReviews && (
+            <Button
+              disabled={isLoading}
+              onClick={loadMoreReviews}
+              className="w-full text-sm font-medium text-gray-600 dark:text-gray-400 capitalize !bg-transparent focus:!ring-0"
+            >
+              Load More
+              {isLoading && (
+                <AiOutlineLoading className="h-6 w-6 animate-spin ml-2"/>
+              )}
+            </Button>
+          )
+          }
         </Modal.Footer>
       </Modal>
     </>

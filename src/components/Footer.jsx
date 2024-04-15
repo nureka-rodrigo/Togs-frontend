@@ -1,6 +1,7 @@
-import { FaFacebook, FaInstagram, FaThreads } from "react-icons/fa6";
-import { Link } from "react-router-dom";
-import { FaLinkedin, FaYoutube } from "react-icons/fa";
+import {FaFacebook, FaInstagram, FaThreads} from "react-icons/fa6";
+import {Link} from "react-router-dom";
+import {FaLinkedin, FaYoutube} from "react-icons/fa";
+import ScrollToTopButton from "./ScrollToTopButton.jsx";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -54,6 +55,7 @@ const Footer = () => {
               <FaYoutube className="w-5 h-5" />
             </Link>
           </div>
+          <ScrollToTopButton/>
         </div>
       </footer>
     </>
